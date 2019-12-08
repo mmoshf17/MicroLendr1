@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    >
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Request Id"
+                    android:id="@+id/lblRequestId" />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BorrowerUserName"
+                    android:id="@+id/lblborrowerUserName" />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lblAmount"
+                    android:text="Amount"
+                    android:layout_marginEnd="30dp"/>
+
+
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RepayWithin"
+                    android:id="@+id/lblRepayWithin"
+                 />
+
+                <TextView
+
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DateCreated"
+                    android:id="@+id/lblDateCreated"
+                    />
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lblStartingDate"
+                    android:text="StartingDate"
+                   />
+
+
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btnAccept"
+
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="Accept"
+            android:onClick="btnAcceptRequest"
+            />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Reject"
+        android:onClick="btnRejectRequest"
+        />
+
+
+
+
+    </LinearLayout>
+
+

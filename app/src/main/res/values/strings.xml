@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MicroLendr</string>
+
+
+    // User Login buttons
+    <string name="login">Login</string>
+    <string name="registerNow">Register Now</string>
+</resources>

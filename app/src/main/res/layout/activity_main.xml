@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Test"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/btnTestProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickProfile"
+        android:text="Profile"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/btnTestSendRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickSendRequest"
+        android:text="Send a request"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/btnMyRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickMyRequest"
+        android:text="My Requests"
+        tools:ignore="OnClick" />
+
+    <Button
+
+        android:layout_width="156dp"
+        android:layout_height="42dp"
+        android:text="Verify"
+        android:onClick="onClickVerify" />
+</LinearLayout>
