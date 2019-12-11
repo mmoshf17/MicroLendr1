@@ -59,11 +59,10 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     }
 
 
+    public void onClickHelp(View view) {
 
 
-
-
-
+    }
 }
 
 

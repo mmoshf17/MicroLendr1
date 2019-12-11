@@ -46,6 +46,12 @@
         <activity android:name=".Authentication"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".TermsConditions"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".Help"
+            android:parentActivityName=".MainActivity"/>
+
         <activity android:name=".ProfileSettingsActivity"
             android:parentActivityName=".MainActivity"/>
 

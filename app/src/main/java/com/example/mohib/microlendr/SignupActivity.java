@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,9 +36,28 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+
+
     public void onClickSignupBtn(View view) {
 
-        new UserRegistering().execute();
+        CheckBox chkbxTerms = findViewById(R.id.chkbxTerms);
+
+        if (chkbxTerms.isChecked()) {
+            new UserRegistering().execute();
+        }
+
+        else{
+
+            Toast.makeText(getApplicationContext(), "\"Please accept the terms and conditions\"",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void onClickTerms(View view) {
+
+        Intent goToTermsConditions = new Intent(SignupActivity.this, TermsConditions.class);
+        startActivity(goToTermsConditions);
+        finish();
 
     }
 

@@ -77,7 +77,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 int responseCode = urlConnection.getResponseCode();
 
-                if(responseCode == HttpURLConnection.HTTP_OK){
+                if(responseCode == HttpURLConnection.HTTP_OK)
+
+                {
 
 
                     String responseString = readStream(urlConnection.getInputStream());
@@ -116,7 +118,24 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
 
-                }else{
+
+                }
+
+               else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED){
+
+                    runOnUiThread(new Runnable(){
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "You are not verified yet. Please verify",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+
+
+                }
+
+                else{
                     //Showing message that you have entered your credential incorrect
                     runOnUiThread(new Runnable(){
                         @Override

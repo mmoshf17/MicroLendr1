@@ -69,12 +69,14 @@ public class LoanRequestsDetail extends AppCompatActivity {
         new AcceptRequest().execute();
     }
 
+
+
     public class AcceptRequest extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
 
             Button acceptRequest = findViewById(R.id.btnAccept);
-
+            //Button rejectRequest = findViewById(R.id.btnReject);
 
 
 
@@ -93,8 +95,9 @@ public class LoanRequestsDetail extends AppCompatActivity {
                 String token = sharedPref.getString("token", "");
 
 
-                //url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus");
-                url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + acceptRequest.getText().toString());
+                  url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + acceptRequest.getText().toString());
+
+
                 //url = new URL("http://localhost:56624/api/Values/CreateRequest");
                 urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -148,7 +151,84 @@ public class LoanRequestsDetail extends AppCompatActivity {
 
     public void btnRejectRequest(View view) {
 
+        new RejectRequest().execute();
+    }
 
+    public class RejectRequest extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+
+            Button rejectRequest = findViewById(R.id.btnReject);
+
+
+
+
+            URL url;
+            HttpURLConnection urlConnection = null;
+
+
+            try {
+                //JSONObject postDataParams = new JSONObject();
+                // postDataParams.put("Id", requestId.getText());
+                //postDataParams.put("Status", acceptRequest.getText().toString());
+
+
+                SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+                String token = sharedPref.getString("token", "");
+
+
+                //url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus");
+                url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + rejectRequest.getText().toString());
+                //url = new URL("http://localhost:56624/api/Values/CreateRequest");
+                urlConnection = (HttpURLConnection) url.openConnection();
+
+                urlConnection.setRequestProperty("Authorization", "Bearer " + token);
+
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoInput(true);
+
+                OutputStream os = urlConnection.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+
+                //PostDataString postDataString = new PostDataString();
+
+                //writer.write(postDataString.getPostDataString(postDataParams));
+
+                writer.flush();
+                writer.close();
+                os.close();
+
+
+                int responseCode = urlConnection.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_ACCEPTED) {
+
+
+                    Intent intent = new Intent(LoanRequestsDetail.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+
+                } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+
+                    Intent intentLogin = new Intent(LoanRequestsDetail.this, MainActivity.class);
+                    startActivity(intentLogin);
+                    finish();
+
+                    Toast.makeText(getApplicationContext(), "Please login/signup, to sell a ticket.",
+                            Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null)
+                    urlConnection.disconnect();
+            }
+            return null;
+        }
     }
 }
 

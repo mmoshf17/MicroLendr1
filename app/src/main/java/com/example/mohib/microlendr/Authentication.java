@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,9 +21,11 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -46,77 +50,97 @@ public class Authentication extends AppCompatActivity {
 
     public void onClickVerify(View view) {
 
-        Information information = new Information();
-
-        information.doInBackground();
+        new AcceptRequest().execute();
     }
 
-
-    public class Information extends AsyncTask<String, String, String> {
-
-
-        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
-        String savedSignedUser = sharedPref.getString("savedSignedUser", "");
-
-        TextView vCode = findViewById(R.id.txtVerify);
-
+    public class AcceptRequest extends AsyncTask<String, Void, Void> {
         @Override
-        protected String doInBackground(String... params) {
+        protected Void doInBackground(String... params) {
+
+
+            SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+            String savedSignedUser = sharedPref.getString("savedSignedUser", "");
+
+            TextView vCode = findViewById(R.id.txtVerify);
+
+
+            //https://microlendrapi.azurewebsites.net/api/Account/VerifyUser?email=sam@hotmail.com&code=6156
+
+
+
+
+            URL url;
+            HttpURLConnection urlConnection = null;
+
 
             try {
-                // Creating & connection Connection with url and required Header.
-                URL url = new URL("https://microlendrapi.azurewebsites.net/api/Account/VerifyUser?email=sam@hotmail.com&code=6156");
-                HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-                //urlConnection.setRequestProperty("header-param_3", "value-3");
-                //urlConnection.setRequestProperty("header-param_4", "value-4");
-                //urlConnection.setRequestProperty("Authorization", "Basic Y2tfNDIyODg0NWI1YmZiZT1234ZjZWNlOTA3ZDYyZjI4MDMxY2MyNmZkZjpjc181YjdjYTY5ZGM0OTUwODE3NzYwMWJhMmQ2OGQ0YTY3Njk1ZGYwYzcw");
-                urlConnection.setRequestMethod("GET");   //POST or GET
-                urlConnection.connect();
+                //JSONObject postDataParams = new JSONObject();
+                // postDataParams.put("Id", requestId.getText());
+                //postDataParams.put("Status", acceptRequest.getText().toString());
 
-                // Create JSONObject Request
-//                JSONObject jsonRequest = new JSONObject();
-//                jsonRequest.put("email", savedSignedUser);
-//                jsonRequest.put("code",vCode.getText());
 
-                // Write Request to output stream to server.
-//                OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
-//                out.write(jsonRequest.toString());
-//                out.close();
 
-                // Check the connection status.
-                int statusCode = urlConnection.getResponseCode();
-                String statusMsg = urlConnection.getResponseMessage();
+                String token = sharedPref.getString("token", "");
 
-                // Connection success. Proceed to fetch the response.
-                if (statusCode == 200) {
-                    InputStream it = new BufferedInputStream(urlConnection.getInputStream());
-                    InputStreamReader read = new InputStreamReader(it);
-                    BufferedReader buff = new BufferedReader(read);
-                    StringBuilder dta = new StringBuilder();
-                    String chunks;
-                    while ((chunks = buff.readLine()) != null) {
-                        dta.append(chunks);
-                    }
-                    String returndata = dta.toString();
-                    return returndata;
-                } else {
-                    //Handle else case
+
+                //url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus");
+                url = new URL("https://microlendrapi.azurewebsites.net/api/Account/VerifyUser?email=" + savedSignedUser + "&code=" + vCode.getText().toString());
+                //url = new URL("http://localhost:56624/api/Values/CreateRequest");
+                urlConnection = (HttpURLConnection) url.openConnection();
+
+                urlConnection.setRequestProperty("Authorization", "Bearer " + token);
+
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoInput(true);
+
+                OutputStream os = urlConnection.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+
+                //PostDataString postDataString = new PostDataString();
+
+                //writer.write(postDataString.getPostDataString(postDataParams));
+
+                writer.flush();
+                writer.close();
+                os.close();
+
+
+                int responseCode = urlConnection.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_ACCEPTED) {
+
+
+                    Intent intent = new Intent(Authentication.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+
+
+                } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+
+                    Intent intentLogin = new Intent(Authentication.this, LoginActivity.class);
+                    startActivity(intentLogin);
+                    finish();
+
+                    Toast.makeText(getApplicationContext(), "Please login/signup.",
+                            Toast.LENGTH_LONG).show();
                 }
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                if (urlConnection != null)
+                    urlConnection.disconnect();
             }
-
             return null;
         }
-
     }
+
+
+
+
+
+
 
 }
