@@ -19,8 +19,13 @@
     <string name="hintRegisterEmail">Email</string>
     <string name="hintRegisterPassword">Password</string>
     <string name="txtTerms">I have read and accept the terms and conditions</string>
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Terms and Conditions
     <string name="txtTermsDetails">In order to comply with privacy regulations in the European Union we will need you to provide consent before being able to register. Its also worth reading our privacy and coockies policy so you understand how we collect and use your personal data.</string>
-    <string name="txtGDPRLink">https://gdpr-info.eu/</string>
+    <string name="txtReadMore">Read more: </string>
+    <string name="txtGDPRLnk">https://gdpr-info.eu/</string>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -46,7 +51,16 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     //Help
-    <string name="txtHelp">This is the help page.</string>
+
+    <string name="txtContactbyEmail">Email: MXXXX.XXXXX@XXXXXXX.XXX</string>
+    <string name="txtContactbyPhone">Phone: 91XXXXXX</string>
+    <string name="txtContactHours">Opening hours: Monday to Friday from 9:00 to 16:00</string>
+    <string name="txtNeedHelp">Need Help?</string>
+    <string name="txtFrequently">Frequently Ask Questions:</string>
+    <string name="txtHowRequest">How do I send a request?</string>
+    <string name="txtHowTransaction">How to I can cancel the transaction?</string>
+    <string name="txtHowPassword">How do I change my password?</string>
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     //Send Request

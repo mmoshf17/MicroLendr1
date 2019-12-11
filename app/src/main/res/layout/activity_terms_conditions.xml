@@ -27,7 +27,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text= "To read more "
+        android:text= "@string/txtReadMore"
         />
 
     <TextView
@@ -37,6 +37,6 @@
         android:clickable="true"
         android:textColor="#0000EE"
         android:layout_height="wrap_content"
-        android:text="@string/txtGDPRLink"/>
+        android:text="@string/txtGDPRLnk"/>
 
 </LinearLayout>
