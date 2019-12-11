@@ -16,18 +16,12 @@
             android:layout_margin="20dp">
 
 
-                <TextView
-                    android:layout_margin="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Request Id"
-                    android:id="@+id/lblRequestId" />
 
                 <TextView
                     android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BorrowerUserName"
+                    android:text="@string/txtBorrowerUserName"
                     android:id="@+id/lblborrowerUserName" />
 
                 <TextView
@@ -35,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblAmount"
-                    android:text="Amount"
+                    android:text="@string/txtAmount"
                     android:layout_marginEnd="30dp"/>
 
 
@@ -44,7 +38,7 @@
                     android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RepayWithin"
+                    android:text="@string/txtRepayWithin"
                     android:id="@+id/lblRepayWithin"
                  />
 
@@ -53,7 +47,7 @@
                     android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DateCreated"
+                    android:text="@string/txtDateCreated"
                     android:id="@+id/lblDateCreated"
                     />
 
@@ -62,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblStartingDate"
-                    android:text="StartingDate"
+                    android:text="@string/txtStartingDate"
                    />
 
 
@@ -72,10 +66,9 @@
 
         <Button
             android:id="@+id/btnAccept"
-
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:text="Accept"
+            android:text="@string/btnAccept"
             android:onClick="btnAcceptRequest"
             />
 
@@ -83,7 +76,7 @@
         android:id="@+id/btnReject"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:text="Reject"
+        android:text="@string/btnReject"
         android:onClick="btnRejectRequest"
         />
 

@@ -48,7 +48,7 @@ public class LoanRequests implements Serializable {
 
     public String toString() {
 
-        return  borrowerUserName + ":" + "\n" + amount;
+        return "Borrower Name: " + borrowerUserName + "\n" + "Amount Requested: " + amount;
     }
 
 }

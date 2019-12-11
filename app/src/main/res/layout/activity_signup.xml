@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="First Name"
+                android:hint="@string/hintFirstName"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Last Name"
+                android:hint="@string/hintLastName"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Phone"
+                android:hint="@string/hintPhone"
                 android:inputType="phone" />
 
             <EditText
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/hintRegisterEmail"
                 android:inputType="textEmailAddress" />
 
 
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/hintRegisterPassword"
                 android:inputType="textPassword" />
 
             <LinearLayout
@@ -78,7 +78,7 @@
                     android:clickable="true"
                     android:textColor="#0000EE"
                     android:layout_height="wrap_content"
-                    android:text="I accept the terms and condition"/>
+                    android:text="@string/txtTerms"/>
 
             </LinearLayout>
 
@@ -88,21 +88,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:gravity="center">
 
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Not Registered yet?       "
-                    />
 
                 <Button
                     android:id="@+id/btnRegisterNow"
-                    android:layout_width="156dp"
-                    android:layout_height="42dp"
-                    android:text="@string/registerNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btnRegisterNow"
                     android:onClick="onClickSignupBtn" />
 
             </LinearLayout>

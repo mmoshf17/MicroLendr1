@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="UserName"
+        android:hint="@string/hintUsername"
         android:inputType="textEmailAddress" />
 
 
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Amount"
+        android:hint="@string/hintAmount"
         android:inputType="number" />
 
         <EditText
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Repay within months"
+            android:hint="@string/hintRepayWithinMonths"
             android:inputType="date" />
 
 
@@ -66,7 +66,7 @@
         android:layout_marginEnd="73dp"
         android:layout_marginBottom="45dp"
         android:onClick="onClickSendRequest"
-        android:text="Send Request" />
+        android:text="@string/btnSendRequest" />
 
 
 

@@ -8,7 +8,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="We have sent you a code in your mail. Please check your email and enter the verification code:"
+        android:text= "@string/txtvCodeInEmail"
         />
 
 
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Verification code"
+        android:hint="@string/hintEnterVerificationCode"
         android:inputType="textPersonName" />
 
 
@@ -25,7 +25,7 @@
         android:id="@+id/btnVerify"
         android:layout_width="156dp"
         android:layout_height="42dp"
-        android:text="Verify"
+        android:text="@string/btnVerify"
         android:onClick="onClickVerify" />
 
 </LinearLayout>

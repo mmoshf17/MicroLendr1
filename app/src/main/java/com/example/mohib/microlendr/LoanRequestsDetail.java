@@ -27,7 +27,7 @@ public class LoanRequestsDetail extends AppCompatActivity {
 
 
     private LoanRequests loanRequests;
-    private TextView requestId;
+    //private TextView requestId;
     private TextView borrowUserName;
     private TextView amount;
     private TextView repayWithinMonths;
@@ -45,8 +45,8 @@ public class LoanRequestsDetail extends AppCompatActivity {
         loanRequests = (LoanRequests) intent.getSerializableExtra("LoanRequests");
 
 
-        requestId = findViewById(R.id.lblRequestId);
-        requestId.setText("Request Id: " + loanRequests.getRequestId());
+        //requestId = findViewById(R.id.lblRequestId);
+        //requestId.setText("Request Id: " + loanRequests.getRequestId());
 
         borrowUserName = findViewById(R.id.lblborrowerUserName);
         borrowUserName.setText("Borrow's UserName: " + loanRequests.getBorrowerUserName());

@@ -2,7 +2,74 @@
     <string name="app_name">MicroLendr</string>
 
 
-    // User Login buttons
-    <string name="login">Login</string>
-    <string name="registerNow">Register Now</string>
+    //Login
+    <string name="txtLogin">Login</string>
+    <string name="btnLogin">Login</string>
+    <string name="hintEmail">Email</string>
+    <string name="hintPassword">Password</string>
+    <string name="btnForgotUser">Forgot Username or Password?</string>
+    <string name="txtNotRegisteredYet">Not Registered yet?</string>
+    <string name="btnRegisterNow">Register Now</string>
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Signup
+    <string name="hintFirstName">First Name</string>
+    <string name="hintLastName">Last Name</string>
+    <string name="hintPhone">Phone</string>
+    <string name="hintRegisterEmail">Email</string>
+    <string name="hintRegisterPassword">Password</string>
+    <string name="txtTerms">I have read and accept the terms and conditions</string>
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Main
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Profile
+    <string name="txtProfileSetting">Profile Settings</string>
+    <string name="txtYouAreLoggedInAs">You are logged in as: </string>
+    <string name="txtUserName">UserName</string>
+    <string name="btnLogout">Logout</string>
+    <string name="btnHelp">Help</string>
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Authentication
+    <string name="txtvCodeInEmail">We have sent you a code in your mail. Please check your email and enter the verification code:</string>
+    <string name="hintEnterVerificationCode">Verification code</string>
+    <string name="btnVerify">Verify</string>
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Help
+    <string name="txtHelp">This is the help page.</string>
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Send Request
+    <string name="hintUsername">UserName</string>
+    <string name="hintAmount">Amount</string>
+    <string name="hintRepayWithinMonths">Repay within months</string>
+    <string name="btnSendRequest">Send Request</string>
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Loan Request Details
+    <string name="txtBorrowerUserName">Borrower UserName:</string>
+    <string name="txtAmount">Amount:</string>
+    <string name="txtRepayWithin">RepayWithin:</string>
+    <string name="txtDateCreated">DateCreated:</string>
+    <string name="txtStartingDate">StartingDate:</string>
+    <string name="btnAccept">Accept</string>
+    <string name="btnReject">Reject</string>
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
 </resources>
