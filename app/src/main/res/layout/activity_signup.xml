@@ -79,7 +79,6 @@
                     android:textColor="#0000EE"
                     android:layout_height="wrap_content"
                     android:text="@string/txtTerms"/>
-
             </LinearLayout>
 
 

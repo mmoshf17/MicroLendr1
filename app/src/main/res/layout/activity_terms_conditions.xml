@@ -3,4 +3,40 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:lines="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text= "@string/txtTermsDetails"
+        />
+
+
+    <TextView
+        android:lines="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text= "To read more "
+        />
+
+    <TextView
+        android:id="@+id/textGDPR"
+        android:onClick="onClickTermsBtn"
+        android:layout_width="wrap_content"
+        android:clickable="true"
+        android:textColor="#0000EE"
+        android:layout_height="wrap_content"
+        android:text="@string/txtGDPRLink"/>
+
 </LinearLayout>

@@ -10,8 +10,6 @@
     <string name="btnForgotUser">Forgot Username or Password?</string>
     <string name="txtNotRegisteredYet">Not Registered yet?</string>
     <string name="btnRegisterNow">Register Now</string>
-
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     //Signup
@@ -21,8 +19,8 @@
     <string name="hintRegisterEmail">Email</string>
     <string name="hintRegisterPassword">Password</string>
     <string name="txtTerms">I have read and accept the terms and conditions</string>
-
-
+    <string name="txtTermsDetails">In order to comply with privacy regulations in the European Union we will need you to provide consent before being able to register. Its also worth reading our privacy and coockies policy so you understand how we collect and use your personal data.</string>
+    <string name="txtGDPRLink">https://gdpr-info.eu/</string>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -39,7 +37,6 @@
     <string name="txtUserName">UserName</string>
     <string name="btnLogout">Logout</string>
     <string name="btnHelp">Help</string>
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     //Authentication
@@ -57,7 +54,6 @@
     <string name="hintAmount">Amount</string>
     <string name="hintRepayWithinMonths">Repay within months</string>
     <string name="btnSendRequest">Send Request</string>
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 
     //Loan Request Details
@@ -68,7 +64,6 @@
     <string name="txtStartingDate">StartingDate:</string>
     <string name="btnAccept">Accept</string>
     <string name="btnReject">Reject</string>
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 
