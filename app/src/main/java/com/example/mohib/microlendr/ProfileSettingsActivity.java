@@ -52,15 +52,13 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         finish();
     }
 
-    public void test(View view) {
-
-
-
-    }
 
 
     public void onClickHelp(View view) {
 
+        Intent goToHelp = new Intent(getApplicationContext(), Help.class);
+        startActivity(goToHelp);
+        finish();
 
     }
 }
