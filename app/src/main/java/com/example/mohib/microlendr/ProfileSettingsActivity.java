@@ -26,11 +26,6 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
         showLoggedInUser.setText(showLogUser);
 
-        //ReadTask task3 = new ReadTask();
-        //task3.execute("https://microlendrapi.azurewebsites.net/api/GetUserInfo?userId=7069e6cf-4f03-4838-aafd-4e301dd11e7e");
-
-
-        //task3.execute("https://microlendrapi.azurewebsites.net/api/GetUserInfo?userId=" + getLoggedInUser.getUserID());
     }
 
     @Override

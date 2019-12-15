@@ -27,16 +27,8 @@ public class MyRequests extends AppCompatActivity {
         String showLogUser = sharedPref.getString("savedUser", "");
 
 
-        //SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
         String token = sharedPref.getString("token", "");
 
-        //HttpURLConnection httpURLConnection = null;
-
-
-
-
-        //readTask.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLoanRequests/?currentUserName=" + showLogUser);
 
         ReadTask readTask = new ReadTask();
         readTask.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLoanRequests/?currentUserName=" + showLogUser);
@@ -50,6 +42,13 @@ public class MyRequests extends AppCompatActivity {
         setContentView(R.layout.activity_my_requests);
     }
 
+    public void onClickSendRequest(View view) {
+
+
+        Intent goToSendRequestActivity = new Intent(getApplicationContext(), SendRequestActivity.class);
+        startActivity(goToSendRequestActivity);
+
+    }
 
 
     private class ReadTask extends ReadHttpTask {

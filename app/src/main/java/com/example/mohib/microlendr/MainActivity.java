@@ -3,13 +3,151 @@ package com.example.mohib.microlendr;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+
+        String token = sharedPref.getString("token", "");
+        String showLogUser = sharedPref.getString("savedUser", "");
+
+        if (Objects.equals(token, "")) {
+
+
+            Intent goToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(goToLogin);
+
+        } else if (!Objects.equals(token, "")) {
+
+
+            GetMustPayInfo getMustPayInfo = new GetMustPayInfo();
+            getMustPayInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetMustPayInfo/?currentUserName=" + showLogUser);
+
+
+            GetLendedInfo getLendedInfo = new GetLendedInfo();
+            getLendedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLendedInfo/?currentUserName=" + showLogUser);
+
+        }
+
+    }
+
+    private class GetLendedInfo extends ReadHttpTask {
+        @Override
+        protected void onPostExecute(CharSequence jsonString) {
+
+            //Gets the data from database and show all tickets into list by using loop
+            final List<LendedInfo> loan = new ArrayList<>();
+
+            try {
+                JSONArray array = new JSONArray(jsonString.toString());
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject obj = array.getJSONObject(i);
+
+
+                    int requestId = obj.getInt("Id");
+                    String borrowerUserName = obj.getString("BorrowerUserName");
+                    String amount = obj.getString("Amount");
+                    String amountRepaid = obj.getString("AmountPaid");
+
+
+
+                    LendedInfo lendedInfo = new LendedInfo(requestId, borrowerUserName, amount, amountRepaid);
+
+                    loan.add(lendedInfo);
+
+
+                }
+
+
+                ListView listViewLendedto = findViewById(R.id.listViewLendedto);
+
+
+                ArrayAdapter<LendedInfo> adapter = new ArrayAdapter<>(getBaseContext(), R.layout.listview_format, loan);
+
+                listViewLendedto.setAdapter(adapter);
+
+
+
+            } catch (JSONException ex)
+            {
+                //messageTextView.setText(ex.getMessage());
+                Log.e("LendedInfo", ex.getMessage());
+            }
+
+
+        }
+
+    }
+
+
+    private class GetMustPayInfo extends ReadHttpTask {
+        @Override
+        protected void onPostExecute(CharSequence jsonString) {
+
+            //Gets the data from database and show all tickets into list by using loop
+            final List<MustPayInfo> loan = new ArrayList<>();
+
+            try {
+                JSONArray array = new JSONArray(jsonString.toString());
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject obj = array.getJSONObject(i);
+
+
+                    int requestId = obj.getInt("Id");
+                    String lenderUserName = obj.getString("LenderUserName");
+                    String amount = obj.getString("Amount");
+                    String amountRepaid = obj.getString("AmountPaid");
+
+
+
+                    MustPayInfo mustPayInfo = new MustPayInfo(requestId, lenderUserName, amount, amountRepaid);
+
+                    loan.add(mustPayInfo);
+
+
+                }
+
+
+                ListView listViewLendedto = findViewById(R.id.listViewMust);
+                ArrayAdapter<MustPayInfo> adapter = new ArrayAdapter<>(getBaseContext(), R.layout.listview_format, loan);
+                listViewLendedto.setAdapter(adapter);
+
+
+
+            } catch (JSONException ex)
+            {
+                //messageTextView.setText(ex.getMessage());
+                Log.e("MustPayInfo", ex.getMessage());
+            }
+
+
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +158,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-    public void onClick(View view) {
-
-
-        Intent i = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(i);
-
-    }
 
 
     public void onClickProfile(View view) {
@@ -50,25 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickSendRequest(View view) {
 
-        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
-        String token = sharedPref.getString("token", "");
-
-        if (Objects.equals(token, "")) {
-
-            Intent intent5 = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent5);
-
-
-        } else if (!Objects.equals(token, "")) {
-            Intent intent6 = new Intent(getApplicationContext(), SendRequestActivity.class);
-            startActivity(intent6);
-
-        }
-
-    }
 
     public void onClickMyRequest(View view) {
 
@@ -91,14 +203,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickVerify(View view) {
-
-
-        Intent goToAuthentication = new Intent(MainActivity.this, Authentication.class);
-        startActivity(goToAuthentication);
-        finish();
-
-    }
 }
 
 

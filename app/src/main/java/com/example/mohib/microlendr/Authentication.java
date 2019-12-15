@@ -116,15 +116,26 @@ public class Authentication extends AppCompatActivity {
                     startActivity(intent);
                     finish();
 
+                    runOnUiThread(new Runnable(){
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Verification successful. Login to continue!",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-                } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                } else {
 
-                    Intent intentLogin = new Intent(Authentication.this, LoginActivity.class);
-                    startActivity(intentLogin);
-                    finish();
+                    runOnUiThread(new Runnable(){
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Incorrect verification code, Please try again",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-                    Toast.makeText(getApplicationContext(), "Please login/signup.",
-                            Toast.LENGTH_LONG).show();
+
+
                 }
 
             } catch (Exception e) {

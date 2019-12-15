@@ -5,17 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+
     tools:context=".MainActivity">
 
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
 
-    <Button
-        android:id="@+id/btnTest"
-        android:layout_width="match_parent"
+    <TextView
+
+        android:text="Lended"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="Test"
-        tools:ignore="OnClick" />
+        />
+        <ListView
+
+            android:layout_width="match_parent"
+            android:id="@+id/listViewLendedto"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true">
+        </ListView>
+
+
+
+</LinearLayout>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:textSize="16sp"
+        android:text="Must Pay"
+        android:textStyle="bold|italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/listViewMust"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true">
+
+
+        </ListView>
+
+
+
+    </LinearLayout>
+
+
+
+
 
     <Button
         android:id="@+id/btnTestProfile"
@@ -25,13 +77,6 @@
         android:text="Profile"
         tools:ignore="OnClick" />
 
-    <Button
-        android:id="@+id/btnTestSendRequest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickSendRequest"
-        android:text="Send a request"
-        tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/btnMyRequest"
@@ -41,10 +86,9 @@
         android:text="My Requests"
         tools:ignore="OnClick" />
 
-    <Button
 
-        android:layout_width="156dp"
-        android:layout_height="42dp"
-        android:text="Verify"
-        android:onClick="onClickVerify" />
+
+
+
+
 </LinearLayout>
