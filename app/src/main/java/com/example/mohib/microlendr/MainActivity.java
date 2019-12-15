@@ -19,7 +19,9 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,12 +45,16 @@ public class MainActivity extends AppCompatActivity {
         } else if (!Objects.equals(token, "")) {
 
 
+
+            GetLendedInfo getLendedInfo = new GetLendedInfo();
+            getLendedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLendedInfo/?currentUserName=" + showLogUser);
+
+
             GetMustPayInfo getMustPayInfo = new GetMustPayInfo();
             getMustPayInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetMustPayInfo/?currentUserName=" + showLogUser);
 
 
-            GetLendedInfo getLendedInfo = new GetLendedInfo();
-            getLendedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLendedInfo/?currentUserName=" + showLogUser);
+
 
         }
 
@@ -57,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     private class GetLendedInfo extends ReadHttpTask {
         @Override
         protected void onPostExecute(CharSequence jsonString) {
+
+
 
             //Gets the data from database and show all tickets into list by using loop
             final List<LendedInfo> loan = new ArrayList<>();
@@ -71,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     String borrowerUserName = obj.getString("BorrowerUserName");
                     String amount = obj.getString("Amount");
                     String amountRepaid = obj.getString("AmountPaid");
+
+
 
 
 

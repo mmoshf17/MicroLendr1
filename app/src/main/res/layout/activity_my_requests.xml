@@ -8,11 +8,18 @@
 
 
 <LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="150dp">
+
+    <TextView
+        android:text="Pending Requests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
     <ListView
-        android:id="@+id/showMyRequests"
+        android:id="@+id/showReceivedRequests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:isScrollContainer="true"
@@ -20,6 +27,48 @@
 
     </ListView>
 </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <TextView
+            android:text="Accepted Requests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ListView
+            android:id="@+id/showAcceptedRequests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true"
+            >
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <TextView
+            android:text="Rejected Requests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ListView
+            android:id="@+id/showRejectedRequests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true"
+            >
+
+        </ListView>
+    </LinearLayout>
 
 
     <TextView

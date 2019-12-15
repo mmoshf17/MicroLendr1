@@ -30,8 +30,14 @@ public class MyRequests extends AppCompatActivity {
         String token = sharedPref.getString("token", "");
 
 
-        ReadTask readTask = new ReadTask();
-        readTask.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLoanRequests/?currentUserName=" + showLogUser);
+        GetReceivedRequests receivedRequests = new GetReceivedRequests();
+        receivedRequests.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLoanRequests/?currentUserName=" + showLogUser);
+
+        GetAcceptedRequests acceptedRequests = new GetAcceptedRequests();
+        acceptedRequests.execute("https://microlendrapi.azurewebsites.net/api/Request/GetAcceptedRequests/?currentUserName=" + showLogUser);
+
+        GetRejectedRequests rejectedRequests = new GetRejectedRequests();
+        rejectedRequests.execute("https://microlendrapi.azurewebsites.net/api/Request/GetRejectedRequests/?currentUserName=" + showLogUser);
 
 
     }
@@ -51,7 +57,7 @@ public class MyRequests extends AppCompatActivity {
     }
 
 
-    private class ReadTask extends ReadHttpTask {
+    private class GetReceivedRequests extends ReadHttpTask {
         @Override
         protected void onPostExecute(CharSequence jsonString) {
 
@@ -80,7 +86,7 @@ public class MyRequests extends AppCompatActivity {
                 }
 
 
-                ListView listView = findViewById(R.id.showMyRequests);
+                ListView listView = findViewById(R.id.showReceivedRequests);
                 ArrayAdapter<LoanRequests> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, loan);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
@@ -95,6 +101,102 @@ public class MyRequests extends AppCompatActivity {
             {
                 //messageTextView.setText(ex.getMessage());
                 Log.e("LoanRequest", ex.getMessage());
+            }
+
+
+        }
+    }
+
+    private class GetAcceptedRequests extends ReadHttpTask {
+        @Override
+        protected void onPostExecute(CharSequence jsonString) {
+
+
+
+            //Gets the data from database and show all tickets into list by using loop
+            final List<AcceptedRequests> loan = new ArrayList<>();
+
+            try {
+                JSONArray array = new JSONArray(jsonString.toString());
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject obj = array.getJSONObject(i);
+
+
+                    int requestId = obj.getInt("Id");
+                    String borrowerUserName = obj.getString("BorrowerUserName");
+                    String amount = obj.getString("Amount");
+
+
+
+                    AcceptedRequests acceptedRequests = new AcceptedRequests(requestId, borrowerUserName, amount);
+
+                    loan.add(acceptedRequests);
+
+
+                }
+
+
+                ListView listView = findViewById(R.id.showAcceptedRequests);
+                ArrayAdapter<AcceptedRequests> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, loan);
+                listView.setAdapter(adapter);
+               // listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+
+                   // Intent goToLoanRequestsDetail = new Intent(getBaseContext(), LoanRequestsDetail.class);
+                  //  LoanRequests loanRequests = (LoanRequests) parent.getItemAtPosition(position);
+                   // goToLoanRequestsDetail.putExtra("LoanRequests", loanRequests);
+
+                   // startActivity(goToLoanRequestsDetail);
+                //});
+            } catch (JSONException ex)
+            {
+                //messageTextView.setText(ex.getMessage());
+                Log.e("AcceptedRequests", ex.getMessage());
+            }
+
+
+        }
+    }
+
+    private class GetRejectedRequests extends ReadHttpTask {
+        @Override
+        protected void onPostExecute(CharSequence jsonString) {
+
+            //Gets the data from database and show all tickets into list by using loop
+            final List<RejectedRequests> loan = new ArrayList<>();
+
+            try {
+                JSONArray array = new JSONArray(jsonString.toString());
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject obj = array.getJSONObject(i);
+
+
+                    int requestId = obj.getInt("Id");
+                    String borrowerUserName = obj.getString("BorrowerUserName");
+                    String amount = obj.getString("Amount");
+
+                    RejectedRequests rejectedRequests = new RejectedRequests(requestId, borrowerUserName, amount);
+
+                    loan.add(rejectedRequests);
+
+
+                }
+
+
+                ListView listView = findViewById(R.id.showRejectedRequests);
+                ArrayAdapter<RejectedRequests> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, loan);
+                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+//
+//                    Intent goToLoanRequestsDetail = new Intent(getBaseContext(), LoanRequestsDetail.class);
+//                    LoanRequests loanRequests = (LoanRequests) parent.getItemAtPosition(position);
+//                    goToLoanRequestsDetail.putExtra("LoanRequests", loanRequests);
+//
+//                    startActivity(goToLoanRequestsDetail);
+//                });
+            } catch (JSONException ex)
+            {
+                //messageTextView.setText(ex.getMessage());
+                Log.e("RejectedRequests", ex.getMessage());
             }
 
 
