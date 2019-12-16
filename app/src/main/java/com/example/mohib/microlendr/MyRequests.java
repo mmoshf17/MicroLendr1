@@ -195,7 +195,6 @@ public class MyRequests extends AppCompatActivity {
 //                });
             } catch (JSONException ex)
             {
-                //messageTextView.setText(ex.getMessage());
                 Log.e("RejectedRequests", ex.getMessage());
             }
 

@@ -86,6 +86,14 @@
         android:text="My Requests"
         tools:ignore="OnClick" />
 
+    <Button
+        android:id="@+id/btnFingerprint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickFingerprint"
+        android:text="FingerPrint"
+        tools:ignore="OnClick" />
+
 
 
 

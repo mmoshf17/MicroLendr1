@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 postDataParams.put("password", userPassword.getText());
 
                 url = new URL("https://microlendrapi.azurewebsites.net/api/Account/Login");
-                //url = new URL("http://localhost:56624/api/Account/Login");
+
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoInput(true);
@@ -85,11 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                     String responseString = readStream(urlConnection.getInputStream());
                     JSONObject obj = new JSONObject(responseString);
                     String kept = obj.get("access_token").toString();
-                    //String loginCrd = responseString;
-
-
-                    //String kept = loginCrd.substring(17, loginCrd.indexOf(",") -1);
-
 
                     //Saving Token
                     SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);

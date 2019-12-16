@@ -65,28 +65,17 @@ public class Authentication extends AppCompatActivity {
             TextView vCode = findViewById(R.id.txtVerify);
 
 
-            //https://microlendrapi.azurewebsites.net/api/Account/VerifyUser?email=sam@hotmail.com&code=6156
-
-
-
-
             URL url;
             HttpURLConnection urlConnection = null;
 
 
             try {
-                //JSONObject postDataParams = new JSONObject();
-                // postDataParams.put("Id", requestId.getText());
-                //postDataParams.put("Status", acceptRequest.getText().toString());
-
-
 
                 String token = sharedPref.getString("token", "");
 
 
-                //url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus");
                 url = new URL("https://microlendrapi.azurewebsites.net/api/Account/VerifyUser?email=" + savedSignedUser + "&code=" + vCode.getText().toString());
-                //url = new URL("http://localhost:56624/api/Values/CreateRequest");
+
                 urlConnection = (HttpURLConnection) url.openConnection();
 
                 urlConnection.setRequestProperty("Authorization", "Bearer " + token);
@@ -98,9 +87,6 @@ public class Authentication extends AppCompatActivity {
                 BufferedWriter writer = new BufferedWriter(
                         new OutputStreamWriter(os, "UTF-8"));
 
-                //PostDataString postDataString = new PostDataString();
-
-                //writer.write(postDataString.getPostDataString(postDataParams));
 
                 writer.flush();
                 writer.close();

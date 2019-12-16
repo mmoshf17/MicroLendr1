@@ -26,25 +26,22 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
+
+
+        @Override
     protected void onStart() {
         super.onStart();
 
-
         SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
         String token = sharedPref.getString("token", "");
         String showLogUser = sharedPref.getString("savedUser", "");
 
-        if (Objects.equals(token, "")) {
-
+         if (Objects.equals(token, "")) {
 
             Intent goToLogin = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(goToLogin);
 
-        } else if (!Objects.equals(token, "")) {
-
-
+         } else if (!Objects.equals(token, "")) {
 
             GetLendedInfo getLendedInfo = new GetLendedInfo();
             getLendedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLendedInfo/?currentUserName=" + showLogUser);
@@ -53,11 +50,14 @@ public class MainActivity extends AppCompatActivity {
             GetMustPayInfo getMustPayInfo = new GetMustPayInfo();
             getMustPayInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetMustPayInfo/?currentUserName=" + showLogUser);
 
-
-
-
         }
 
+    }
+
+    public void onClickFingerprint(View view){
+
+        Intent goToFingerPrintActivity = new Intent(getApplicationContext(), FingerPrint.class);
+        startActivity(goToFingerPrintActivity);
     }
 
     private class GetLendedInfo extends ReadHttpTask {
@@ -80,20 +80,13 @@ public class MainActivity extends AppCompatActivity {
                     String amount = obj.getString("Amount");
                     String amountRepaid = obj.getString("AmountPaid");
 
-
-
-
-
                     LendedInfo lendedInfo = new LendedInfo(requestId, borrowerUserName, amount, amountRepaid);
 
                     loan.add(lendedInfo);
 
-
                 }
 
-
                 ListView listViewLendedto = findViewById(R.id.listViewLendedto);
-
 
                 ArrayAdapter<LendedInfo> adapter = new ArrayAdapter<>(getBaseContext(), R.layout.listview_format, loan);
 
@@ -103,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (JSONException ex)
             {
-                //messageTextView.setText(ex.getMessage());
                 Log.e("LendedInfo", ex.getMessage());
             }
 
@@ -149,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (JSONException ex)
             {
-                //messageTextView.setText(ex.getMessage());
                 Log.e("MustPayInfo", ex.getMessage());
             }
 
@@ -166,10 +157,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
     public void onClickProfile(View view) {
 
         SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
@@ -182,9 +169,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent3);
 
 
+
         } else if (!Objects.equals(token, "")) {
             Intent intent4 = new Intent(getApplicationContext(), ProfileSettingsActivity.class);
             startActivity(intent4);
+
 
         }
 
@@ -207,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
         } else if (!Objects.equals(token, "")) {
             Intent intent6 = new Intent(getApplicationContext(), MyRequests.class);
             startActivity(intent6);
+
+
 
         }
 

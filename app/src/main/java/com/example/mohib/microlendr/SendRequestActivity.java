@@ -60,8 +60,6 @@ public class SendRequestActivity extends AppCompatActivity {
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
 
-
-
                 new DatePicker.OnDateChangedListener(){
                     @Override
                     public void onDateChanged(DatePicker view,int year, int monthOfYear,int dayOfMonth) {
@@ -78,22 +76,8 @@ public class SendRequestActivity extends AppCompatActivity {
             }
         }
 
-
-
         }
 
-
-    //Getting date
-    /*public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
-        int day = 01;
-        int month = datePicker.getMonth();
-        int year =  datePicker.getYear();
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-
-        return calendar.getTime();
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,14 +120,8 @@ public class SendRequestActivity extends AppCompatActivity {
                 String calendar = dateformat.format(c.getTime());
 
 
-
-
-
-
                 URL url;
                 HttpURLConnection urlConnection = null;
-
-
 
                 try {
                     JSONObject postDataParams = new JSONObject();
@@ -161,7 +139,7 @@ public class SendRequestActivity extends AppCompatActivity {
 
 
                     url = new URL("https://microlendrapi.azurewebsites.net/api/Request/CreateRequest");
-                    //url = new URL("http://localhost:56624/api/Values/CreateRequest");
+
                     urlConnection = (HttpURLConnection) url.openConnection();
 
                     urlConnection.setRequestProperty("Authorization", "Bearer " + token);

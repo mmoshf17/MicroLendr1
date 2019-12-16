@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
+import android.widget.ToggleButton;
 
 
 public class ProfileSettingsActivity extends AppCompatActivity {
@@ -22,7 +22,13 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
         String showLogUser = sharedPref.getString("savedUser", "");
 
-        TextView showLoggedInUser = (TextView) findViewById(R.id.txtLoggedinAs);
+        String toggleFingerprintState = sharedPref.getString("toggleFingerprint", "");
+
+        TextView showLoggedInUser = findViewById(R.id.txtLoggedinAs);
+
+        ToggleButton toggleButton = findViewById(R.id.toggleFingerPrint);
+        toggleButton.setText(toggleFingerprintState);
+
 
         showLoggedInUser.setText(showLogUser);
 
@@ -56,44 +62,19 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         finish();
 
     }
+
+    public void onClickToggleFingerprint(View view){
+
+        ToggleButton toggleFingerprintValue = (ToggleButton) findViewById(R.id.toggleFingerPrint);
+        CharSequence getToggleFingerprintValue = toggleFingerprintValue.getText();
+
+        //Saving Toggle button's value to invoke fingerprint on startup
+        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("toggleFingerprint", getToggleFingerprintValue.toString());
+        editor.apply();
+    }
 }
 
-
-    /*private class ReadTask extends ReadHttpTask {
-        @Override
-        protected void onPostExecute(CharSequence jsonString) {
-            //TextView messageTextView = findViewById(R.id.show_list);
-
-                TextView showLoggedInUser = (TextView) findViewById(R.id.txtLoggedinAs);
-
-            //final List<GetLoggedInUser> getUser = new ArrayList<>();
-
-            try {
-                JSONArray array = new JSONArray(jsonString.toString());
-
-                    JSONObject obj = array.getJSONObject(0);
-                    //Get the following data from Database
-
-                   // String email = obj.toString();
-
-                   // String email = obj.toString();
-
-                String email = obj.getString("Username");
-
-                    //Adding values to the list
-                    //getUser.add(email.toString());
-                    showLoggedInUser.setText(email);
-
-
-
-
-            } catch (JSONException ex) {
-                //messageTextView.setText(ex.getMessage());
-                Log.e("Tickets", ex.getMessage());
-            }
-
-
-        }
-    }*/
 
 

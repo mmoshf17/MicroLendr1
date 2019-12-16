@@ -12,14 +12,11 @@ public class MustPayInfo implements Serializable {
     private String amountRepaid;
 
     public MustPayInfo(int requestId, String lenderUserName, String amount, String amountRepaid){
-        // public Tickets(String name){
-
 
         this.requestId = requestId;
         this.lenderUserName = lenderUserName;
         this.amount = amount;
         this.amountRepaid = amountRepaid;
-
 
 
 }

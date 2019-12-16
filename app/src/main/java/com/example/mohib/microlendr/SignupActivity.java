@@ -33,9 +33,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-
     }
-
 
 
     public void onClickSignupBtn(View view) {
@@ -85,7 +83,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
                 url = new URL("https://microlendrapi.azurewebsites.net/api/Account/Register");
-                //url = new URL("http://localhost:56624/api/Account/Register");
+
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoInput(true);
@@ -98,8 +96,7 @@ public class SignupActivity extends AppCompatActivity {
                 writer.flush();
                 writer.close();
                 os.close();
-                //HTTP header
-                //urlConnection.setRequestProperty("Authorization", "Bearer "+ token);
+
 
                 int responseCode = urlConnection.getResponseCode();
                 String responseMessage = urlConnection.getResponseMessage();

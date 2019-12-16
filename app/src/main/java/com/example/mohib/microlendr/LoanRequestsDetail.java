@@ -44,10 +44,6 @@ public class LoanRequestsDetail extends AppCompatActivity {
         Intent intent = getIntent();
         loanRequests = (LoanRequests) intent.getSerializableExtra("LoanRequests");
 
-
-        //requestId = findViewById(R.id.lblRequestId);
-        //requestId.setText("Request Id: " + loanRequests.getRequestId());
-
         borrowUserName = findViewById(R.id.lblborrowerUserName);
         borrowUserName.setText("Borrow's UserName: " + loanRequests.getBorrowerUserName());
 
@@ -76,19 +72,12 @@ public class LoanRequestsDetail extends AppCompatActivity {
         protected Void doInBackground(String... params) {
 
             Button acceptRequest = findViewById(R.id.btnAccept);
-            //Button rejectRequest = findViewById(R.id.btnReject);
-
-
 
             URL url;
             HttpURLConnection urlConnection = null;
 
 
             try {
-                //JSONObject postDataParams = new JSONObject();
-               // postDataParams.put("Id", requestId.getText());
-                //postDataParams.put("Status", acceptRequest.getText().toString());
-
 
                 SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
@@ -98,7 +87,6 @@ public class LoanRequestsDetail extends AppCompatActivity {
                   url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + acceptRequest.getText().toString());
 
 
-                //url = new URL("http://localhost:56624/api/Values/CreateRequest");
                 urlConnection = (HttpURLConnection) url.openConnection();
 
                 urlConnection.setRequestProperty("Authorization", "Bearer " + token);
@@ -110,9 +98,6 @@ public class LoanRequestsDetail extends AppCompatActivity {
                 BufferedWriter writer = new BufferedWriter(
                         new OutputStreamWriter(os, "UTF-8"));
 
-                //PostDataString postDataString = new PostDataString();
-
-                //writer.write(postDataString.getPostDataString(postDataParams));
 
                 writer.flush();
                 writer.close();
@@ -168,19 +153,13 @@ public class LoanRequestsDetail extends AppCompatActivity {
 
 
             try {
-                //JSONObject postDataParams = new JSONObject();
-                // postDataParams.put("Id", requestId.getText());
-                //postDataParams.put("Status", acceptRequest.getText().toString());
-
 
                 SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
                 String token = sharedPref.getString("token", "");
 
-
-                //url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus");
                 url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + rejectRequest.getText().toString());
-                //url = new URL("http://localhost:56624/api/Values/CreateRequest");
+
                 urlConnection = (HttpURLConnection) url.openConnection();
 
                 urlConnection.setRequestProperty("Authorization", "Bearer " + token);
@@ -192,9 +171,6 @@ public class LoanRequestsDetail extends AppCompatActivity {
                 BufferedWriter writer = new BufferedWriter(
                         new OutputStreamWriter(os, "UTF-8"));
 
-                //PostDataString postDataString = new PostDataString();
-
-                //writer.write(postDataString.getPostDataString(postDataParams));
 
                 writer.flush();
                 writer.close();
