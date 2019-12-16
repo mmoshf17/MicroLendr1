@@ -10,6 +10,7 @@ import android.os.CancellationSignal;
 import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @TargetApi ( Build.VERSION_CODES.M )
 class FingerprintHandler extends FingerprintManager.AuthenticationCallback{
@@ -72,6 +73,8 @@ class FingerprintHandler extends FingerprintManager.AuthenticationCallback{
             Intent intent4 = new Intent(context.getApplicationContext( ) , MainActivity.class);
             context.startActivity(intent4);
             ((Activity) context).finish();
+            Toast.makeText(context.getApplicationContext( ) , "\"Login Successful\"",
+                    Toast.LENGTH_LONG).show();
 
         }
 

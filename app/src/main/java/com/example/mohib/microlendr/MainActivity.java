@@ -54,11 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickFingerprint(View view){
 
-        Intent goToFingerPrintActivity = new Intent(getApplicationContext(), FingerPrint.class);
-        startActivity(goToFingerPrintActivity);
-    }
 
     private class GetLendedInfo extends ReadHttpTask {
         @Override

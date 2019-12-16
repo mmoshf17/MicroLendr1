@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FingerPrint extends AppCompatActivity {
@@ -27,7 +28,10 @@ public class FingerPrint extends AppCompatActivity {
         setContentView(R.layout.activity_fingerprint);
 
         textView = findViewById(R.id.txtFingerprintInfo);
+        ImageView imgView = findViewById(R.id.imgFingerprint);
         btnGotoLogin = findViewById(R.id.btnGotoLogin);
+
+        imgView.setImageResource(R.mipmap.pressfingerprint);
 
 
         // Check: Android version is greater or equal to Marshmallow
@@ -75,7 +79,7 @@ public class FingerPrint extends AppCompatActivity {
 
         else {
 
-            textView.setText("Please place your finger on the fingerprint scanner to login");
+            textView.setText("Use your finger to login");
 
 
 
