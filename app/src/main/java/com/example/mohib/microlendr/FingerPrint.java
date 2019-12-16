@@ -79,7 +79,7 @@ public class FingerPrint extends AppCompatActivity {
 
         else {
 
-            textView.setText("Use your finger to login");
+            textView.setText("Use your fingerprint to login");
 
 
 

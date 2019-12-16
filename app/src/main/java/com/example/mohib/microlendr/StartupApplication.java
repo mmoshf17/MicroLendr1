@@ -37,7 +37,7 @@ public class StartupApplication extends AppCompatActivity {
        else if (!Objects.equals(toggleFingerprintValue, "ON")) {
 
 
-            Intent goToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+            Intent goToLogin = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(goToLogin);
             finish();
 

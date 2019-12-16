@@ -25,7 +25,7 @@ public class MustPayInfo implements Serializable {
 
     public String toString() {
 
-        return "Must Pay: " + lenderUserName + "\n" + "Total Amount: " + amount + "\n" + "Amount Paid: " + amountRepaid;
+        return "Must pay to: " + lenderUserName + "\n" + "Total Amount: " + amount + "\n" + "Amount Paid: " + amountRepaid;
     }
 
 }

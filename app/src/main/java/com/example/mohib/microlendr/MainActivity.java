@@ -54,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onClickloans(View view){
+
+        Intent gotoLoans = new Intent(getApplicationContext(), Loans.class);
+        startActivity(gotoLoans);
+    }
 
 
     private class GetLendedInfo extends ReadHttpTask {

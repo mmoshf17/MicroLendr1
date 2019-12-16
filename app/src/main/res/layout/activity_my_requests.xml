@@ -13,6 +13,9 @@
     android:layout_height="150dp">
 
     <TextView
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:textStyle="bold|italic"
         android:text="Pending Requests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +29,15 @@
         >
 
     </ListView>
+
+
 </LinearLayout>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
     <LinearLayout
         android:orientation="vertical"
@@ -34,6 +45,9 @@
         android:layout_height="150dp">
 
         <TextView
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold|italic"
             android:text="Accepted Requests"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,12 +63,21 @@
         </ListView>
     </LinearLayout>
 
+    <TextView
+        android:lines="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
         <TextView
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold|italic"
             android:text="Rejected Requests"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

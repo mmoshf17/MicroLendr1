@@ -61,7 +61,7 @@ public class MyRequests extends AppCompatActivity {
         @Override
         protected void onPostExecute(CharSequence jsonString) {
 
-            //Gets the data from database and show all tickets into list by using loop
+            //Gets the data from database and show all info into list by using loop
             final List<LoanRequests> loan = new ArrayList<>();
 
             try {
@@ -89,6 +89,7 @@ public class MyRequests extends AppCompatActivity {
                 ListView listView = findViewById(R.id.showReceivedRequests);
                 ArrayAdapter<LoanRequests> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, loan);
                 listView.setAdapter(adapter);
+
                 listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
 
                     Intent goToLoanRequestsDetail = new Intent(getBaseContext(), LoanRequestsDetail.class);
@@ -113,7 +114,7 @@ public class MyRequests extends AppCompatActivity {
 
 
 
-            //Gets the data from database and show all tickets into list by using loop
+            //Gets the data from database and show all info into list by using loop
             final List<AcceptedRequests> loan = new ArrayList<>();
 
             try {
@@ -161,7 +162,7 @@ public class MyRequests extends AppCompatActivity {
         @Override
         protected void onPostExecute(CharSequence jsonString) {
 
-            //Gets the data from database and show all tickets into list by using loop
+            //Gets the data from database and show all info into list by using loop
             final List<RejectedRequests> loan = new ArrayList<>();
 
             try {

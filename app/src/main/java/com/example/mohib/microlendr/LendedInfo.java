@@ -46,7 +46,7 @@ public class LendedInfo implements Serializable {
 
     public String toString() {
 
-        return "Lended: " + borrowerUserName + "\n" + "Total Amount: " + amount + "\n" + "Amount Paid: " + amountRepaid;
+        return "Lended to: " + borrowerUserName + "\n" + "Total Amount: " + amount + "\n" + "Amount Paid: " + amountRepaid;
     }
 
 }

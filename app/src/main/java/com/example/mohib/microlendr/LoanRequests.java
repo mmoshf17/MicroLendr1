@@ -17,7 +17,9 @@ public class LoanRequests implements Serializable {
 
 
 
-    public LoanRequests(int requestId, String borrowerUserName, String amount, String repayWithin, String startingDate, String dateCreated){
+    public LoanRequests(int requestId, String borrowerUserName, String amount, String repayWithin, String startingDate, String dateCreated)
+
+    {
         this.requestId = requestId;
         this.borrowerUserName = borrowerUserName;
         this.amount = amount;

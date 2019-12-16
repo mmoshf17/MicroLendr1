@@ -33,6 +33,15 @@
         <activity android:name=".MainActivity"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".Loans"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".BorrowedLoanDetails"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".LendedLoanDetails"
+            android:parentActivityName=".MainActivity"/>
+
         <activity android:name=".FingerPrint"
             android:parentActivityName=".MainActivity"/>
 
