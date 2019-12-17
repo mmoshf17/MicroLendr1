@@ -68,7 +68,6 @@
     </LinearLayout>
 
 
-
     <Button
         android:id="@+id/btnTestProfile"
         android:layout_width="match_parent"
@@ -92,6 +91,14 @@
         android:layout_height="wrap_content"
         android:onClick="onClickloans"
         android:text="Loans"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/btnMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickProfile"
+        android:text="Main"
         tools:ignore="OnClick" />
 
 
