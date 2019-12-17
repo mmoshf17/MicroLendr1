@@ -6,14 +6,14 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -33,6 +33,32 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        EditText editTextPassPopup = (EditText)findViewById(R.id.txtSignupPassword);
+
+//we create the TextWatcher
+        TextWatcher textWatcher = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                editTextPassPopup.setError("Password must consist of: Length of 6 alphanumeric, " +
+                        "at least one digit, one letter, one uppercase letter and one lowercase letter");
+
+            }
+        };
+
+//we must add the textWatcher to our EditText
+        editTextPassPopup.addTextChangedListener(textWatcher);
     }
 
 
@@ -51,6 +77,8 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
+
+
     public void onClickTerms(View view) {
 
         Intent goToTermsConditions = new Intent(SignupActivity.this, TermsConditions.class);
@@ -58,6 +86,7 @@ public class SignupActivity extends AppCompatActivity {
         finish();
 
     }
+
 
     public class UserRegistering extends AsyncTask<String, Void, Void> {
 
