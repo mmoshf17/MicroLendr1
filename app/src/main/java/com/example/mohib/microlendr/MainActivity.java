@@ -27,7 +27,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity {
 
 
 
@@ -71,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(CharSequence jsonString) {
 
-
-
-            //Gets the data from database and show all tickets into list by using loop
+            //Gets the data from database and show all lended information into list by using loop
             final List<LendedInfo> loan = new ArrayList<>();
 
             try {
@@ -92,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
                     loan.add(lendedInfo);
 
                 }
-
-
-
 
                 ListView listViewLendedto = findViewById(R.id.listViewLendedto);
 

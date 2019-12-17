@@ -69,7 +69,6 @@ public class MyRequests extends AppCompatActivity {
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject obj = array.getJSONObject(i);
 
-
                     int requestId = obj.getInt("Id");
                     String borrowerUserName = obj.getString("BorrowerUserName");
                     String amount = obj.getString("Amount");
@@ -77,14 +76,10 @@ public class MyRequests extends AppCompatActivity {
                     String startingDate = obj.getString("DateCreated");
                     String dateCreated = obj.getString("StartingDate");
 
-
                     LoanRequests loanRequests = new LoanRequests(requestId, borrowerUserName, amount, repayWithinMonths, startingDate, dateCreated);
 
                     loan.add(loanRequests);
-
-
                 }
-
 
                 ListView listView = findViewById(R.id.showReceivedRequests);
                 ArrayAdapter<LoanRequests> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, loan);

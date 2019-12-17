@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-public class LendedLoanDetails extends AppCompatActivity {
+ public class LendedLoanDetails extends AppCompatActivity {
 
 
         private LendedLoans lendedLoans;

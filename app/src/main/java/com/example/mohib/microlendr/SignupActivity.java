@@ -25,6 +25,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -33,47 +35,77 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        EditText editTextPassPopup = (EditText)findViewById(R.id.txtSignupPassword);
 
-//we create the TextWatcher
-        TextWatcher textWatcher = new TextWatcher() {
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                editTextPassPopup.setError("Password must consist of: Length of 6 alphanumeric, " +
-                        "at least one digit, one letter, one uppercase letter and one lowercase letter");
-
-            }
-        };
-
-//we must add the textWatcher to our EditText
-        editTextPassPopup.addTextChangedListener(textWatcher);
     }
 
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@_.]).*$");
 
     public void onClickSignupBtn(View view) {
 
+        EditText editTextFirstName = findViewById(R.id.txtFirstName);
+        EditText editTextLastName = findViewById(R.id.txtLastName);
+        EditText editTextPhone = findViewById(R.id.txtPhone);
+        EditText editTextEmail = findViewById(R.id.txtEmail);
+        EditText editTextPassword = findViewById(R.id.txtSignupPassword);
+
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
         CheckBox chkbxTerms = findViewById(R.id.chkbxTerms);
 
-        if (chkbxTerms.isChecked()) {
-            new UserRegistering().execute();
+        String passwordInput = editTextPassword.getText().toString().trim();
+
+
+        if (editTextFirstName.getText().toString().isEmpty()) {
+            editTextFirstName.setError("Field can't be empty");
+
         }
 
-        else{
+        else if (editTextLastName.getText().toString().isEmpty()) {
+            editTextLastName.setError("Field can't be empty");
+
+        }
+
+        else if (editTextPhone.getText().toString().isEmpty()) {
+            editTextPhone.setError("Field can't be empty");
+
+        }
+
+        else if (editTextEmail.getText().toString().isEmpty()) {
+            editTextEmail.setError("Field can't be empty");
+
+        }
+
+        else if (!editTextEmail.getText().toString().matches(emailPattern))
+        {
+            editTextEmail.setError("Email is incorrect");
+        }
+
+        else if (passwordInput.isEmpty()) {
+            editTextPassword.setError("Field can't be empty");
+
+        }
+
+        else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
+            editTextPassword.setError("Password must consist of: Length of 6 alphanumeric at least one digit, one letter, one uppercase letter and one lowercase letter");
+
+        }
+
+        else if (!chkbxTerms.isChecked()) {
 
             Toast.makeText(getApplicationContext(), "\"Please accept the terms and conditions\"",
                     Toast.LENGTH_LONG).show();
+        }
+
+
+
+
+
+        else{
+
+            new UserRegistering().execute();
+
+
         }
     }
 

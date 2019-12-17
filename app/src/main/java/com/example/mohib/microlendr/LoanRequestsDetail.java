@@ -25,21 +25,17 @@ import java.util.Date;
 
 public class LoanRequestsDetail extends AppCompatActivity {
 
-
     private LoanRequests loanRequests;
-    //private TextView requestId;
     private TextView borrowUserName;
     private TextView amount;
     private TextView repayWithinMonths;
     private TextView dateCreated;
     private TextView startingDate;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_requests_detail);
-
 
         Intent intent = getIntent();
         loanRequests = (LoanRequests) intent.getSerializableExtra("LoanRequests");
@@ -66,7 +62,6 @@ public class LoanRequestsDetail extends AppCompatActivity {
     }
 
 
-
     public class AcceptRequest extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
@@ -84,7 +79,8 @@ public class LoanRequestsDetail extends AppCompatActivity {
                 String token = sharedPref.getString("token", "");
 
 
-                  url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + acceptRequest.getText().toString());
+                  url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId="
+                          + loanRequests.getRequestId() + "&status=" + acceptRequest.getText().toString());
 
 
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -193,7 +189,7 @@ public class LoanRequestsDetail extends AppCompatActivity {
                     startActivity(intentLogin);
                     finish();
 
-                    Toast.makeText(getApplicationContext(), "Please login/signup, to sell a ticket.",
+                    Toast.makeText(getApplicationContext(), "Please login/signup.",
                             Toast.LENGTH_LONG).show();
                 }
 
