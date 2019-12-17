@@ -23,6 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -213,6 +216,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 
     @Override
