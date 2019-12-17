@@ -1,8 +1,17 @@
 package com.example.mohib.microlendr;
 
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.graphics.fonts.Font;
+import android.support.v4.text.HtmlCompat;
+import android.text.Html;
+
 import java.io.Serializable;
 
-public class LendedInfo implements Serializable {
+import static android.graphics.Typeface.*;
+import static android.provider.Settings.System.getString;
+
+public class LendedInfo<BOLD> implements Serializable {
 
     //For getting information on accepted requests
 
@@ -41,6 +50,9 @@ public class LendedInfo implements Serializable {
         return amount;
     }
     public String getAmountRepaid() { return amountRepaid; }
+
+
+
 
 
 

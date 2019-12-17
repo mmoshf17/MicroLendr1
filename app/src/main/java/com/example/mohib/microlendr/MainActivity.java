@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             GetMustPayInfo getMustPayInfo = new GetMustPayInfo();
             getMustPayInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetMustPayInfo/?currentUserName=" + showLogUser);
 
+             GetBalance getBalance = new GetBalance();
+             getBalance.execute("https://microlendrapi.azurewebsites.net/api/Request/GetBalance/?currentUserName=" + showLogUser);
+
         }
 
     }
@@ -86,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
                     loan.add(lendedInfo);
 
                 }
+
+
+
 
                 ListView listViewLendedto = findViewById(R.id.listViewLendedto);
 
@@ -143,6 +149,64 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException ex)
             {
                 Log.e("MustPayInfo", ex.getMessage());
+            }
+
+
+        }
+
+    }
+
+
+
+    private class GetBalance extends ReadHttpTask {
+
+        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String showLogUser = sharedPref.getString("savedUser", "");
+        int sumLender;
+        int sumBorrowed;
+        @Override
+        protected void onPostExecute(CharSequence jsonString) {
+
+            //Gets the data from database and show all tickets into list by using loop
+            final List<MustPayInfo> loan = new ArrayList<>();
+
+            try {
+                JSONArray array = new JSONArray(jsonString.toString());
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject obj = array.getJSONObject(i);
+
+
+                    int requestId = obj.getInt("Id");
+                    String lenderUserName = obj.getString("LenderUserName");
+                    int amount = obj.getInt("Amount");
+                    String borrowerUseName = obj.getString("BorrowerUserName");
+
+
+                    if (lenderUserName.equals(showLogUser)){
+
+                        sumLender =+ amount;
+
+                    }
+
+                    else if (borrowerUseName.equals(showLogUser)){
+
+                        sumBorrowed =+ amount;
+                    }
+
+
+
+                }
+
+                int res = sumLender - sumBorrowed;
+
+                TextView listViewBalance =  findViewById(R.id.txtBalance);
+                listViewBalance.setText(String.valueOf("Balance: " + res));
+
+
+
+            } catch (JSONException ex)
+            {
+               // Log.e("MustPayInfo", ex.getMessage());
             }
 
 
