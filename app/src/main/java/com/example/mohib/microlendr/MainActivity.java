@@ -184,13 +184,13 @@ public class MainActivity extends AppCompatActivity {
 
                     if (lenderUserName.equals(showLogUser)){
 
-                        sumLender =+ amount;
+                        sumLender += amount;
 
                     }
 
                     else if (borrowerUseName.equals(showLogUser)){
 
-                        sumBorrowed =+ amount;
+                        sumBorrowed += amount;
                     }
 
 
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 int res = sumLender - sumBorrowed;
 
                 TextView listViewBalance =  findViewById(R.id.txtBalance);
-                listViewBalance.setText(String.valueOf("Balance: " + res));
+                listViewBalance.setText("Balance: " + Integer.toString(res));
 
 
 
