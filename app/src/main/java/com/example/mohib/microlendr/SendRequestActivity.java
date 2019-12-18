@@ -87,6 +87,7 @@ public class SendRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_request);
 
         BottomNavigationView navigation = findViewById(R.id.navigationView);
+        navigation.getMenu().getItem(1).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_Home:

@@ -14,6 +14,7 @@ public class Help extends AppCompatActivity {
         setContentView(R.layout.activity_help);
 
         BottomNavigationView navigation = findViewById(R.id.navigationView);
+        navigation.getMenu().getItem(3).setChecked(true);
         navigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_Home:

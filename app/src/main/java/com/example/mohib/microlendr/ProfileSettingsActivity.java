@@ -33,6 +33,7 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
         showLoggedInUser.setText(showLogUser);
 
+
     }
 
 
@@ -42,7 +43,8 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_settings);
 
         BottomNavigationView navigation = findViewById(R.id.navigationView);
-        navigation.setOnNavigationItemSelectedListener(item -> {
+        navigation.getMenu().getItem(3).setChecked(true);
+        navigation.setOnNavigationItemSelectedListener(item ->  {
 
             switch (item.getItemId()) {
                 case R.id.navigation_Home:

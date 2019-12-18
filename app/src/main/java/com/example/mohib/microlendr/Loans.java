@@ -68,6 +68,7 @@ import java.util.Objects;
           setContentView(R.layout.activity_loans);
 
           BottomNavigationView navigation = findViewById(R.id.navigationView);
+          navigation.getMenu().getItem(2).setChecked(true);
           navigation.setOnNavigationItemSelectedListener(item -> {
               switch (item.getItemId()) {
                   case R.id.navigation_Home:
