@@ -7,7 +7,7 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/navigation_Request"
+        android:id="@+id/navigation_Requests"
         android:icon="@drawable/baseline_swap_horiz_black_24dp"
         android:title="Requests" />
 
