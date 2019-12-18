@@ -274,8 +274,6 @@ import android.support.v7.app.AppCompatActivity;
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            TextView title = (TextView) findViewById(R.id.homeTitle1);
-            title.setText("Home");
 
             BottomNavigationView navigation = findViewById(R.id.navigationView);
             navigation.setOnNavigationItemSelectedListener(item -> {
