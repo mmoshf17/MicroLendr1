@@ -8,7 +8,7 @@
         android:id="@+id/navigation_Home"
         android:icon="@drawable/baseline_home_black_24dp"
         android:title="Home"
-        android:checkable="true"/>
+        android:checkable="true" />
 
     <item
         android:id="@+id/navigation_Requests"
