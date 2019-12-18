@@ -56,22 +56,22 @@ public class MyRequests extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(item ->    {
             switch (item.getItemId()) {
                 case R.id.navigation_Home:
-                    //item.setChecked(false);
+                    item.setChecked(false);
                     Intent a = new Intent(MyRequests.this,MainActivity.class);
                     startActivity(a);
                     break;
                 case R.id.navigation_Requests:
-                    //item.setChecked(true);
+                    item.setChecked(true);
                     Intent b = new Intent(MyRequests.this,MyRequests.class);
                     startActivity(b);
                     break;
                 case R.id.navigation_Loans:
-                    //item.setChecked(false);
+                    item.setChecked(false);
                     Intent c = new Intent(MyRequests.this,Loans.class);
                     startActivity(c);
                     break;
                 case R.id.navigation_Settings:
-                    //item.setChecked(false);
+                    item.setChecked(false);
                     Intent d = new Intent(MyRequests.this,ProfileSettingsActivity.class);
                     startActivity(d);
                     break;
