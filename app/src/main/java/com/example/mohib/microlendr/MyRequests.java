@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -42,10 +44,38 @@ public class MyRequests extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_requests);
+
+        BottomNavigationView navigation = findViewById(R.id.navigationView);
+        navigation.setOnNavigationItemSelectedListener(item ->    {
+            switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    item.setChecked(false);
+                    Intent a = new Intent(MyRequests.this,MainActivity.class);
+                    startActivity(a);
+                    break;
+                case R.id.navigation_Requests:
+                    item.setChecked(true);
+                    Intent b = new Intent(MyRequests.this,MyRequests.class);
+                    startActivity(b);
+                    break;
+                case R.id.navigation_Loans:
+                    item.setChecked(false);
+                    Intent c = new Intent(MyRequests.this,Loans.class);
+                    startActivity(c);
+                    break;
+                case R.id.navigation_Settings:
+                    item.setChecked(false);
+                    Intent d = new Intent(MyRequests.this,ProfileSettingsActivity.class);
+                    startActivity(d);
+                    break;
+            }
+            return false;
+        });
     }
 
     public void onClickSendRequest(View view) {

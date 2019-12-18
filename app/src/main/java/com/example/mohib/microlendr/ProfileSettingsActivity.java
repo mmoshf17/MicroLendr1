@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.biometrics.BiometricPrompt;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -34,11 +35,39 @@ public class ProfileSettingsActivity extends AppCompatActivity {
 
     }
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_settings);
 
+        BottomNavigationView navigation = findViewById(R.id.navigationView);
+        navigation.setOnNavigationItemSelectedListener(item -> {
+
+            switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    item.setChecked(false);
+                    Intent a = new Intent(ProfileSettingsActivity.this,MainActivity.class);
+                    startActivity(a);
+                    break;
+                case R.id.navigation_Requests:
+                    item.setChecked(false);
+                    Intent b = new Intent(ProfileSettingsActivity.this,MyRequests.class);
+                    startActivity(b);
+                    break;
+                case R.id.navigation_Loans:
+                    item.setChecked(false);
+                    Intent c = new Intent(ProfileSettingsActivity.this,Loans.class);
+                    startActivity(c);
+                    break;
+                case R.id.navigation_Settings:
+                    item.setChecked(true);
+                    Intent d = new Intent(ProfileSettingsActivity.this,ProfileSettingsActivity.class);
+                    startActivity(d);
+                    break;
+            }
+            return false;
+        });
     }
     public void onClickLogoutBtn(View view) {
 

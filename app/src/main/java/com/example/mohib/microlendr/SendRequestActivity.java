@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -79,14 +80,35 @@ public class SendRequestActivity extends AppCompatActivity {
         }
 
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_request);
 
-
+        BottomNavigationView navigation = findViewById(R.id.navigationView);
+        navigation.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_Home:
+                    Intent a = new Intent(SendRequestActivity.this,MainActivity.class);
+                    startActivity(a);
+                    break;
+                case R.id.navigation_Requests:
+                    Intent b = new Intent(SendRequestActivity.this,MyRequests.class);
+                    startActivity(b);
+                    break;
+                case R.id.navigation_Loans:
+                    Intent c = new Intent(SendRequestActivity.this,Loans.class);
+                    startActivity(c);
+                    break;
+                case R.id.navigation_Settings:
+                    Intent d = new Intent(SendRequestActivity.this,ProfileSettingsActivity.class);
+                    startActivity(d);
+                    break;
+            }
+            return false;
+        });
     }
-
 
     public void onClickSendRequest(View view) {
 

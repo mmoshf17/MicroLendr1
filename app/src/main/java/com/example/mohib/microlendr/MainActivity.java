@@ -276,21 +276,25 @@ import android.support.v7.app.AppCompatActivity;
             setContentView(R.layout.activity_main);
 
             BottomNavigationView navigation = findViewById(R.id.navigationView);
-            navigation.setOnNavigationItemSelectedListener(item -> {
+            navigation.setOnNavigationItemSelectedListener(item ->  {
                 switch (item.getItemId()) {
                     case R.id.navigation_Home:
+                        item.setChecked(true);
                         Intent a = new Intent(MainActivity.this,MainActivity.class);
                         startActivity(a);
                         break;
                     case R.id.navigation_Requests:
+                        item.setChecked(true);
                         Intent b = new Intent(MainActivity.this,MyRequests.class);
                         startActivity(b);
                         break;
                     case R.id.navigation_Loans:
+                        item.setChecked(true);
                         Intent c = new Intent(MainActivity.this,Loans.class);
                         startActivity(c);
                         break;
                     case R.id.navigation_Settings:
+                        item.setChecked(true);
                         Intent d = new Intent(MainActivity.this,ProfileSettingsActivity.class);
                         startActivity(d);
                         break;

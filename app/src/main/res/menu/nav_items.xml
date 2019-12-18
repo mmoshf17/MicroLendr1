@@ -4,19 +4,23 @@
     <item
         android:id="@+id/navigation_Home"
         android:icon="@drawable/baseline_home_black_24dp"
-        android:title="Home" />
+        android:title="Home"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_Requests"
         android:icon="@drawable/baseline_swap_horiz_black_24dp"
-        android:title="Requests" />
+        android:title="Requests"
+        android:checkable="true"/>
 
     <item
         android:id="@+id/navigation_Loans"
         android:icon="@drawable/baseline_attach_money_black_24dp"
-        android:title="Loans" />
+        android:title="Loans"
+        android:checkable="true"/>
     <item
         android:id="@+id/navigation_Settings"
         android:icon="@drawable/baseline_settings_applications_black_24dp"
-        android:title="Settings" />
+        android:title="Settings"
+        android:checkable="true"/>
 </menu>
