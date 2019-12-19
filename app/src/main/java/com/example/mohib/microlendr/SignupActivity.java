@@ -87,7 +87,7 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
-            editTextPassword.setError("Password must consist of: Length of 6 alphanumeric at least one digit, one letter, one uppercase letter and one lowercase letter");
+            editTextPassword.setError("The Password must consist of a minimum Length of 6 inputs, with at least one digit, one letter, one uppercase letter and one special character(@  , -  .)");
 
         }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -60,12 +61,40 @@ import java.util.Objects;
 
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loans);
-    }
 
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_loans);
+
+          BottomNavigationView navigation = findViewById(R.id.navigationView);
+          navigation.getMenu().getItem(2).setChecked(true);
+          navigation.setOnNavigationItemSelectedListener(item -> {
+              switch (item.getItemId()) {
+                  case R.id.navigation_Home:
+                      item.setChecked(false);
+                      Intent a = new Intent(Loans.this,MainActivity.class);
+                      startActivity(a);
+                      break;
+                  case R.id.navigation_Requests:
+                      item.setChecked(false);
+                      Intent b = new Intent(Loans.this,MyRequests.class);
+                      startActivity(b);
+                      break;
+                  case R.id.navigation_Loans:
+                      item.setChecked(true);
+                      Intent c = new Intent(Loans.this,Loans.class);
+                      startActivity(c);
+                      break;
+                  case R.id.navigation_Settings:
+                      item.setChecked(false);
+                      Intent d = new Intent(Loans.this,ProfileSettingsActivity.class);
+                      startActivity(d);
+                      break;
+              }
+              return false;
+          });
+      }
 
     private class GetLendedInfo extends ReadHttpTask {
         @Override

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -215,13 +217,13 @@ import android.support.v7.app.AppCompatActivity;
 
 
 
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 
-
+*/
     public void onClickProfile(View view) {
 
         SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
@@ -268,7 +270,40 @@ import android.support.v7.app.AppCompatActivity;
 
 
     }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-}
+            BottomNavigationView navigation = findViewById(R.id.navigationView);
+            navigation.getMenu().getItem(0).setChecked(true);
+            navigation.setOnNavigationItemSelectedListener(item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_Home:
+                        item.setChecked(true);
+                        Intent a = new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(a);
+                        break;
+                    case R.id.navigation_Requests:
+                        item.setChecked(false);
+                        Intent b = new Intent(MainActivity.this,MyRequests.class);
+                        startActivity(b);
+                        break;
+                    case R.id.navigation_Loans:
+                        item.setChecked(false);
+                        Intent c = new Intent(MainActivity.this,Loans.class);
+                        startActivity(c);
+                        break;
+                    case R.id.navigation_Settings:
+                        item.setChecked(false);
+                        Intent d = new Intent(MainActivity.this,ProfileSettingsActivity.class);
+                        startActivity(d);
+                        break;
+                }
+                return false;
+            });
+        }
+    }
+
 
 
