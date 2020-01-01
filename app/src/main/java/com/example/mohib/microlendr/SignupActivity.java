@@ -143,7 +143,7 @@ public class SignupActivity extends AppCompatActivity {
                 postDataParams.put("Password", enterPassword.getText());
 
 
-                url = new URL("https://microlendrapi.azurewebsites.net/api/Account/Register");
+                url = new URL("https://microlendrapiwebapp.azurewebsites.net/api/Account/Register");
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");

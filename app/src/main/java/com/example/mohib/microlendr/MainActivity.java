@@ -49,14 +49,14 @@ import android.support.v7.app.AppCompatActivity;
          } else if (!Objects.equals(token, "")) {
 
             GetLendedInfo getLendedInfo = new GetLendedInfo();
-            getLendedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLendedInfo/?currentUserName=" + showLogUser);
+            getLendedInfo.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetLendedInfo/?currentUserName=" + showLogUser);
 
 
             GetMustPayInfo getMustPayInfo = new GetMustPayInfo();
-            getMustPayInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetMustPayInfo/?currentUserName=" + showLogUser);
+            getMustPayInfo.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetMustPayInfo/?currentUserName=" + showLogUser);
 
              GetBalance getBalance = new GetBalance();
-             getBalance.execute("https://microlendrapi.azurewebsites.net/api/Request/GetBalance/?currentUserName=" + showLogUser);
+             getBalance.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetBalance/?currentUserName=" + showLogUser);
 
         }
 

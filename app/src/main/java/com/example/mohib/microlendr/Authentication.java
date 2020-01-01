@@ -74,7 +74,7 @@ public class Authentication extends AppCompatActivity {
                 String token = sharedPref.getString("token", "");
 
 
-                url = new URL("https://microlendrapi.azurewebsites.net/api/Account/VerifyUser?email=" + savedSignedUser + "&code=" + vCode.getText().toString());
+                url = new URL("https://microlendrapiwebapp.azurewebsites.net/api/Account/VerifyUser?email=" + savedSignedUser + "&code=" + vCode.getText().toString());
 
                 urlConnection = (HttpURLConnection) url.openConnection();
 

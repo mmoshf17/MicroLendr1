@@ -33,13 +33,13 @@ public class MyRequests extends AppCompatActivity {
 
 
         GetReceivedRequests receivedRequests = new GetReceivedRequests();
-        receivedRequests.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLoanRequests/?currentUserName=" + showLogUser);
+        receivedRequests.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetLoanRequests/?currentUserName=" + showLogUser);
 
         GetAcceptedRequests acceptedRequests = new GetAcceptedRequests();
-        acceptedRequests.execute("https://microlendrapi.azurewebsites.net/api/Request/GetAcceptedRequests/?currentUserName=" + showLogUser);
+        acceptedRequests.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetAcceptedRequests/?currentUserName=" + showLogUser);
 
         GetRejectedRequests rejectedRequests = new GetRejectedRequests();
-        rejectedRequests.execute("https://microlendrapi.azurewebsites.net/api/Request/GetRejectedRequests/?currentUserName=" + showLogUser);
+        rejectedRequests.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetRejectedRequests/?currentUserName=" + showLogUser);
 
 
 

@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 postDataParams.put("username", userId.getText());
                 postDataParams.put("password", userPassword.getText());
 
-                url = new URL("https://microlendrapi.azurewebsites.net/api/Account/Login");
+                url = new URL("https://microlendrapiwebapp.azurewebsites.net/api/Account/Login");
 
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");

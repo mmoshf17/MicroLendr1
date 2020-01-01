@@ -79,7 +79,7 @@ public class LoanRequestsDetail extends AppCompatActivity {
                 String token = sharedPref.getString("token", "");
 
 
-                  url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId="
+                  url = new URL("https://microlendrapiwebapp.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId="
                           + loanRequests.getRequestId() + "&status=" + acceptRequest.getText().toString());
 
 
@@ -154,7 +154,7 @@ public class LoanRequestsDetail extends AppCompatActivity {
 
                 String token = sharedPref.getString("token", "");
 
-                url = new URL("https://microlendrapi.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + rejectRequest.getText().toString());
+                url = new URL("https://microlendrapiwebapp.azurewebsites.net/api/Request/LoanRequestStatus?currentRequestId=" + loanRequests.getRequestId() + "&status=" + rejectRequest.getText().toString());
 
                 urlConnection = (HttpURLConnection) url.openConnection();
 

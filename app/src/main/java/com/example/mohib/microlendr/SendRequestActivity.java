@@ -161,7 +161,7 @@ public class SendRequestActivity extends AppCompatActivity {
 
 
 
-                    url = new URL("https://microlendrapi.azurewebsites.net/api/Request/CreateRequest");
+                    url = new URL("https://microlendrapiwebapp.azurewebsites.net/api/Request/CreateRequest");
 
                     urlConnection = (HttpURLConnection) url.openConnection();
 

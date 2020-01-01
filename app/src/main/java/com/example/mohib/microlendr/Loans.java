@@ -39,19 +39,19 @@ import java.util.Objects;
         } else if (!Objects.equals(token, "")) {
 
             GetLendedInfo getLendedInfo = new GetLendedInfo();
-            getLendedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetLendedLoan/?currentUserName=" + showLogUser);
+            getLendedInfo.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetLendedLoan/?currentUserName=" + showLogUser);
 
 
             GetBorrowedInfo getBorrowedInfo = new GetBorrowedInfo();
-            getBorrowedInfo.execute("https://microlendrapi.azurewebsites.net/api/Request/GetBorrowedLoan/?currentUserName=" + showLogUser);
+            getBorrowedInfo.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetBorrowedLoan/?currentUserName=" + showLogUser);
 
 
             GetUpcomingPayments getUpcomingPayments = new GetUpcomingPayments();
-            getUpcomingPayments.execute("https://microlendrapi.azurewebsites.net/api/Request/GetUpcomingPayments/?currentUserName=" + showLogUser);
+            getUpcomingPayments.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetUpcomingPayments/?currentUserName=" + showLogUser);
 
 
             GetUpcomingPaybacks getUpcomingPaybacks = new GetUpcomingPaybacks();
-            getUpcomingPaybacks.execute("https://microlendrapi.azurewebsites.net/api/Request/GetUpcomingPaybacks/?currentUserName=" + showLogUser);
+            getUpcomingPaybacks.execute("https://microlendrapiwebapp.azurewebsites.net/api/Request/GetUpcomingPaybacks/?currentUserName=" + showLogUser);
 
         }
 
